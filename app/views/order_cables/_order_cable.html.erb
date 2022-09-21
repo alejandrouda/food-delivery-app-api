@@ -1,0 +1,7 @@
+<div id="order_cable-<%= order_cable.id %>">
+  <small>
+    <strong><%= order_cable.user.email %></strong>
+    <i><%= order_cable.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+  </small>
+  <p><%= order_cable.content %></p>
+</div>

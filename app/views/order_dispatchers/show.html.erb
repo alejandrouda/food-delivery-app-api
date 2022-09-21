@@ -1,0 +1,25 @@
+<!-- app/views/order_dispatchers/show.html.erb -->
+<div class="container order-dispatcher"
+  data-controller="order-dispatcher-subscription"
+  data-order-dispatcher-subscription-order-dispatcher-id-value="<%= @order_dispatcher.id %>"
+>
+ <h1>#<%= @order_dispatcher.name %></h1>
+
+  <div class="ordercables" data-order-dispatcher-subscription-target="ordercables">
+    <% @order_dispatcher.order_cables.each do |order_cable| %>
+      <%= render "order_cables/order_cable", order_cable: order_cable %>
+    <% end %>
+  </div>
+
+</div>
+
+<%= simple_form_for [@order_dispatcher, @order_cable],
+  html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
+%>
+  <%= f.input :content,
+    label: false,
+    placeholder: "order_cable ##{@order_dispatcher.name}",
+    wrapper_html: {class: "flex-grow-1"}
+  %>
+  <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+<% end %>
