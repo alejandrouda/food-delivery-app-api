@@ -8,6 +8,10 @@ Bundler.require(*Rails.groups)
 
 module FoodDeliveryAppApi
   class Application < Rails::Application
+
+    # Changing project to API only: https://guides.rubyonrails.org/api_app.html#changing-an-existing-application
+    config.api_only = true
+
     config.generators do |generate|
       generate.assets false
       generate.helper false
